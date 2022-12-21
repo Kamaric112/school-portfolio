@@ -1,46 +1,81 @@
-import React from 'react';
+import React, { SetStateAction, useState } from 'react';
 import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
-import tw, { css } from 'twin.macro';
-
-interface Link {
-  url: string;
-  title: string;
-  activeKey: string;
-}
+import tw, { styled } from 'twin.macro';
+import { useRouter } from 'next/router';
+import { IHeaderLink } from './HeaderLinks';
+import MobileHeader from './MobileHeader';
+import MenuIc from '@components/Icon/MenuIc';
+import CloseIc from '@components/Icon/CloseIc';
 export interface HeaderProps {
-  links: Array<Link>;
+  links: IHeaderLink[];
 }
-console.log('test');
 
 const Header = ({ links }: HeaderProps) => {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="flex justify-center items-center gap-4 font-mono">
-      {links.map((link) => (
-        <Link href={link.url} key={link.activeKey}>
-          <div>{link.title} </div>
-        </Link>
-      ))}
+    <div className="sticky top-0 z-50 bg-[#262626] h-12 md:h-28 flex justify-center items-center">
+      {/* mobile nav */}
+      <MobileHeaderWrapper open={open}>
+        <button
+          className="block lg:hidden self-end -mx-4 -mb-6 -my-2"
+          onClick={() => setOpen(!open)}
+        >
+          <CloseIc />
+        </button>
+        <StyledLink href="/" $isActive={router.pathname === '/' ? true : false}>
+          Home
+        </StyledLink>
+        {links.map((link) => (
+          <StyledLink
+            href={link.url}
+            key={link.activeKey}
+            $isActive={router.pathname.includes(link.activeKey)}
+          >
+            {link.title}
+          </StyledLink>
+        ))}
+      </MobileHeaderWrapper>
+
+      <HeaderWrapper>
+        <StyledLink href="/" $isActive={router.pathname === '/' ? true : false}>
+          Home
+        </StyledLink>
+        {links.map((link) => (
+          <StyledLink
+            href={link.url}
+            key={link.activeKey}
+            $isActive={router.pathname.includes(link.activeKey)}
+          >
+            {link.title}
+          </StyledLink>
+        ))}
+      </HeaderWrapper>
+
+      <button
+        className="block lg:hidden self-end absolute right-2 "
+        onClick={() => setOpen(!open)}
+      >
+        <MenuIc />
+      </button>
     </div>
   );
 };
 
 export default Header;
 
-// const StyledLink = styled(Link)(({ $isActive }: { $isActive: boolean }) => [
-//   tw` flex flex-wrap lg:items-center font-semibold leading-none py-5 px-4 xl:px-5 text-left rounded-lg lg:rounded-b-none border border-b-0 hover:bg-yellow bg-orange gap-3 xl:text-xl text-brown lg:text-center  `,
-//   $isActive
-//     ? tw` bg-yellow order-last lg:order-none xl:pt-2 lg:pt-3 z-1 border-t-8 border-t-lime-1 rounded-b-none border-x border-x-orange-1 relative top-[1px] all:rotate-0`
-//     : tw` border-orange-1 xl:text-center xl:self-center xl:py-5 lg:py-6 border-b lg:border-b-0`,
-// ]);
+const StyledLink = styled(Link)(({ $isActive }: { $isActive: boolean }) => [
+  tw`text-xl `,
+  $isActive
+    ? tw` border-b-2 border-b-red-700 `
+    : tw`hover:text-2xl transform duration-200`,
+]);
 
-// const StyledLink = ({ isActive }) => (
-//   <Link
-//     css={[
-//       tw`flex flex-wrap lg:items-center font-semibold leading-none py-5 px-4 xl:px-5 text-left rounded-lg lg:rounded-b-none border border-b-0 hover:bg-yellow bg-orange gap-3 xl:text-xl text-brown lg:text-center `,
-//       isActive
-//         ? tw`bg-yellow order-last lg:order-none xl:pt-2 lg:pt-3 z-1 border-t-8 border-t-lime-1 rounded-b-none border-x border-x-orange-1 relative top-[1px] all:rotate-0`
-//         : tw`border-orange-1 xl:text-center xl:self-center xl:py-5 lg:py-6 border-b lg:border-b-0`,
-//     ]}
-//   ></Link>
-// );
+const HeaderWrapper = tw.div`hidden lg:flex justify-center items-center gap-4 font-mono `;
+
+const MobileHeaderWrapper = styled('div')(({ open }: { open: boolean }) => [
+  tw`absolute right-0 top-0 justify-center items-center gap-4 font-mono  bg-[#1E1E1E] w-auto h-auto md:hidden rounded-md p-6 transform duration-200 self-end z-30`,
+  open ? tw` -translate-y-0 flex flex-col ` : tw`-translate-y-full -top-80`,
+]);
