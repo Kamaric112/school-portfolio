@@ -1,10 +1,8 @@
 import React, { SetStateAction, useState } from 'react';
 import Link from 'next/link';
-import { v4 as uuidv4 } from 'uuid';
 import tw, { styled } from 'twin.macro';
 import { useRouter } from 'next/router';
 import { IHeaderLink } from './HeaderLinks';
-import MobileHeader from './MobileHeader';
 import MenuIc from '@components/Icon/MenuIc';
 import CloseIc from '@components/Icon/CloseIc';
 export interface HeaderProps {
@@ -16,7 +14,7 @@ const Header = ({ links }: HeaderProps) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="sticky top-0 z-50 bg-[#262626] h-12 md:h-28 flex justify-center items-center">
+    <header className="sticky top-0 z-50 bg-[#262626] h-12 md:h-28 flex justify-center items-center">
       {/* mobile nav */}
       <MobileHeaderWrapper open={open}>
         <button
@@ -60,7 +58,7 @@ const Header = ({ links }: HeaderProps) => {
       >
         <MenuIc />
       </button>
-    </div>
+    </header>
   );
 };
 

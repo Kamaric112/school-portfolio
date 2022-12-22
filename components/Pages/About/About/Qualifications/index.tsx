@@ -36,37 +36,42 @@ const Qualifications = () => {
                 exit={{ opacity: 0 }}
                 className="p-2 text-lg  border border-gray-300"
               >
-                <TextStyled>
-                  Front-End Developer - Full-time Internship:
-                </TextStyled>
-                <TextStyled>
-                  Company: HDWEBSOFT Software Development Company{' '}
-                </TextStyled>
-                <TextStyled>Project: Social Media Talent Website </TextStyled>
-                <TextStyled>Team Size: 4 </TextStyled>
-                <TextStyled>Duration: Oct/2022 - Dec/2022 </TextStyled>
-                <TextStyled>
-                  Description: As a Front-End Developer intern at HDWEBSOFT, I
-                  was responsible for contributing to the development of the
-                  Social Media Talent Website. My main tasks included creating
-                  user interface elements for various pages, developing APIs to
-                  enable data modification, and retrieving data to be displayed
-                  on the front-end.
-                </TextStyled>
-                <TextStyled>
-                  Technology used:Jira,NextJS (ServerSide-Rendering),
-                  TypeScript, React Query, and MySQL database
-                </TextStyled>
+                <div className="flex flex-col px-4">
+                  <div>
+                    <p>2017 - 2021 </p>
+                    <h2>
+                      Ho Chi Minh City University of Technology (Bach Khoa
+                      University)
+                    </h2>
+                    <div>Civil Engineering</div>
+                    <ul>
+                      <li></li>
+                    </ul>
+                  </div>
+                  <BreakLine />
+                  <div>
+                    <p>2022 </p>
+                    <h2>
+                      The International English Language Testing System (IELTS)
+                    </h2>
+                    <div>IDP Vietnam</div>
+                    <div>7.5 overall </div>
+                  </div>
+                  <BreakLine />
 
-                <BreakLine />
-                <TextStyled>
-                  During my time as a structural engineer, I gained valuable
-                  experience in project management and engineering analysis,
-                  skills that I believe will translate well to the field of
-                  front-end development. I am excited to use my analytical and
-                  problem-solving abilities to design and develop intuitive and
-                  user-friendly web applications.
-                </TextStyled>
+                  <div>
+                    <p>Aug/2022 - Oct/2022 </p>
+                    <h2>CoderSchool</h2>
+                    <div>Full Stack Web Development</div>
+                    <div>Front end Course Finished</div>
+                  </div>
+                  <div>
+                    <p>2022 </p>
+                    <h2>The Odin Project</h2>
+                    <div>Full Stack Web Development Online Course</div>
+                    <div>Learned the basics of HTML, CSS and JavaScript</div>
+                  </div>
+                </div>
               </m.div>
             </>
           )}

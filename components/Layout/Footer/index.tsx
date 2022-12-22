@@ -5,7 +5,7 @@ import { motion as m } from 'framer-motion';
 
 const Footer = () => {
   return (
-    <m.div
+    <m.footer
       className={`bg-[#1e1e1e]  p-4 flex flex-col md:flex-row justify-between gap-12 h-auto md:h-28 `}
       initial="hidden"
       whileInView="visible"
@@ -18,7 +18,7 @@ const Footer = () => {
     >
       <PageLinks />
       <SocialLinks />
-    </m.div>
+    </m.footer>
   );
 };
 
