@@ -6,10 +6,10 @@ import { motion as m } from 'framer-motion';
 const Footer = () => {
   return (
     <m.footer
-      className={`bg-[#1e1e1e]  p-4 flex flex-col md:flex-row justify-between gap-12 h-auto md:h-28 `}
+      className={`footer footer-center p-10 bg-base-200 text-base-content rounded`}
       initial="hidden"
       whileInView="visible"
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 1 }}
       variants={{
         visible: { opacity: 1, scale: 1 },
         hidden: { opacity: 0, scale: 0 },
@@ -18,6 +18,11 @@ const Footer = () => {
     >
       <PageLinks />
       <SocialLinks />
+      <div>
+        <p className="font-mono text-xl">
+          © 2022 - Portfolio | Made from scratch, with NextJS.
+        </p>
+      </div>
     </m.footer>
   );
 };

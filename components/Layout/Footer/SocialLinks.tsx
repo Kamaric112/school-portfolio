@@ -6,19 +6,16 @@ import Link from 'next/link';
 
 const SocialLinks = () => {
   return (
-    <div className="container mx-auto text-center text-white flex flex-col gap-3">
-      <p className="text-2xl">My Social Accounts</p>
-      <div className="flex justify-center gap-3">
-        {socials.map((social) => (
-          <Link
-            href={social.url}
-            key={social.url}
-            className="text-gray-400 hover:text-white mx-3"
-          >
-            {social.svg}
-          </Link>
-        ))}
-      </div>
+    <div className="grid grid-flow-col gap-4">
+      {socials.map((social) => (
+        <Link
+          href={social.url}
+          key={social.url}
+          className="text-gray-400 hover:text-white mx-3"
+        >
+          {social.svg}
+        </Link>
+      ))}
     </div>
   );
 };

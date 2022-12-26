@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@types/uuid": "^9.0.0",
+    "daisyui": "^2.46.0",
     "framer-motion": "^7.10.2",
     "next": "13.0.2",
     "react": "18.2.0",

@@ -14,7 +14,7 @@ const Header = ({ links }: HeaderProps) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-[#262626] h-12 md:h-28 flex justify-center items-center">
+    <header className="sticky top-0 z-50 h-12 md:h-28 flex justify-center items-center">
       {/* mobile nav */}
       <MobileHeaderWrapper open={open}>
         <button
